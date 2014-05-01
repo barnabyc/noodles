@@ -1,0 +1,10 @@
+{
+  "name": "noodles",
+  "author": "Barnaby Claydon",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-react": "^0.3.2",
+    "gulp-es6-module-transpiler": "^0.1.1",
+    "gulp-es6-transpiler": "^0.1.3"
+  }
+}
