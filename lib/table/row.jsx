@@ -29,4 +29,3 @@ let Cell = React.createClass({
 });
 
 export default Row;
-
