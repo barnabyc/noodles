@@ -1,4 +1,7 @@
-import transform from 'lib/transform';
+import {
+  transformAccounts,
+  transformTransactions
+} from 'data/transform';
 
 import Header    from 'lib/table/header';
 import Row       from 'lib/table/row';
@@ -6,15 +9,17 @@ import Footer    from 'lib/table/footer';
 
 let App = React.createClass({
   propTypes: {
-    items: React.PropTypes.array
+    items:    React.PropTypes.array.isRequired,
+    accounts: React.PropTypes.array.isRequired
   },
 
   getInitialState: {
-    items: []
+    items:    [],
+    accounts: []
   }
 
   render: () => {
-    let { items } = this.state;
+    let { items, accounts } = this.state;
 
     return (
       <div>
@@ -30,10 +35,15 @@ let App = React.createClass({
   },
 
   componentWillMount: () => {
-    let { items } = this.props;
-    let transformedItems = transform( items );
+    let { items, accounts } = this.props;
 
-    this.setState({ items: transformedItems });
+    let transformedAccounts = transformAccounts( accounts );
+    let transformedItems    = transformTransactions( items, transformedAccounts );
+
+    this.setState({
+      items:    transformedItems,
+      accounts: transformedAccounts
+    });
   }
 });
 

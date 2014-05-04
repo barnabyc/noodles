@@ -4,7 +4,7 @@ let transformAccounts = (accounts) => {
   return computeInitialAccountBalances( accounts );
 };
 
-let computeInitialAccountBalances = (accounts) => {
+let keyedAccountBalances = (accounts) => {
   return _.reduce(accounts, (account, acc) => {
     acc[ account.accountNumber ] = account.initialBalances;
 
@@ -12,15 +12,13 @@ let computeInitialAccountBalances = (accounts) => {
   }, {});
 };
 
-let transformTransactions = (items, accounts) => {
-  let initialAccountBalances = transformAccounts( accounts );
-
-  return computeBalances( items, initialAccountBalances );
+let transformTransactions = (items, keyedAccountBalances) => {
+  return computeBalances( items, keyedAccountBalances );
 };
 
-let computeBalances = (items, initialAccountBalances) => {
+let computeBalances = (items, keyedAccountBalances) => {
   let sorted = _.sortBy(items, 'incurredDate');
-  let runningAccountBalances = _.clone(initialAccountBalances);
+  let runningAccountBalances = _.clone(keyedAccountBalances);
 
   sorted.map((transaction) => {
     let {
