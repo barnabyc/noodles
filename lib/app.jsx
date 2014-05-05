@@ -3,9 +3,9 @@ import {
   transformTransactions
 } from 'data/transform';
 
-import Header    from 'lib/table/header';
-import Row       from 'lib/table/row';
-import Footer    from 'lib/table/footer';
+import Header from 'lib/table/header';
+import Row    from 'lib/table/row';
+import Footer from 'lib/table/footer';
 
 let App = React.createClass({
   propTypes: {
@@ -16,7 +16,7 @@ let App = React.createClass({
   getInitialState: {
     items:    [],
     accounts: []
-  }
+  },
 
   render: () => {
     let { items, accounts } = this.state;

@@ -1,10 +1,10 @@
 import _ from 'vendor/underscore';
 
 let transformAccounts = (accounts) => {
-  return computeInitialAccountBalances( accounts );
+  return keyAccountBalances( accounts );
 };
 
-let keyedAccountBalances = (accounts) => {
+let keyAccountBalances = (accounts) => {
   return _.reduce(accounts, (account, acc) => {
     acc[ account.accountNumber ] = account.initialBalances;
 

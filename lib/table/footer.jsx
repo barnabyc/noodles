@@ -1,12 +1,12 @@
 import _ from 'vendor/underscore';
 
-let total = (array, property) {
+let total = (array, property) => {
   return _.reduce(array, (datum, acc) => {
     return acc + datum[ property ];
   }, 0);
 };
 
-let uniqs = (array, property) {
+let uniqs = (array, property) => {
   return _.uniq(_.pluck(array, property)).length;
 };
 

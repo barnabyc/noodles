@@ -4,7 +4,10 @@ var es6ModuleTranspiler = require("gulp-es6-module-transpiler");
 var es6Transpiler       = require('gulp-es6-transpiler');
 
 gulp.task('default', function () {
-  return gulp.src('lib/*.jsx')
+  return gulp.src([
+      'data/**/*.js',
+      'lib/**/*.jsx'
+    ])
     .pipe(react({
       harmony: true
     }))

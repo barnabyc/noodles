@@ -3,7 +3,7 @@ import moment from 'vendor/moment';
 const SCHEMA = [
   {
     incurredDate: 'date',
-    amount:       'decimal'
+    amount:       'decimal',
     name:         'string',
 
     account:      'string',
@@ -11,10 +11,10 @@ const SCHEMA = [
     approximate:  'bool',
     pending:      'bool',
     cleared:      'bool',
-    clearedDate:  'date'
+    clearedDate:  'date',
 
     detail: {
-      referenceNumber: 'string'
+      referenceNumber: 'string',
       manual:          'bool',
       recurring:       'bool'
     },
