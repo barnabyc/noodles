@@ -6,34 +6,33 @@ let total = (array, property) => {
   }, 0);
 };
 
-let uniqs = (array, property) => {
+let numUniq = (array, property) => {
   return _.uniq(_.pluck(array, property)).length;
 };
 
 let Footer = React.createClass({
   propTypes: {
-    data: React.PropTypes.array
+    items:    React.PropTypes.array.isRequired,
+    accounts: React.PropTypes.array.isRequired
   },
 
   render: () => {
-    let { data } = this.props;
+    let { items, accounts } = this.props;
 
     return (
       <tfoot>
         <tr>
           <th></th>
-          <th>{total(data, 'credit')}</th>
-          <th>{total(data, 'debit')}</th>
-          <th>{uniqs(data, 'name')}</th>
+          <th>{total(items, 'credit')}</th>
+          <th>{total(items, 'debit')}</th>
+          <th>{numUniq(items, 'name')}</th>
 
-          {/* @todo map over accounts */}
-          <th>{total(data, 'citizensAmount')}</th>
-          <th>{total(data, 'his1Amount')}</th>
-          <th>{total(data, 'his2Amount')}</th>
-          <th>{total(data, 'simpleAmount')}</th>
+          {accounts.map((account) => {
+            return <th>{total(items,account.accountNumber)}</th>
+          })}
 
-          <th>{uniqs(data, 'detail')}</th>
-          <th>{uniqs(data, 'notes')}</th>
+          <th>{numUniq(items, 'detail')}</th>
+          <th>{numUniq(items, 'notes')}</th>
         </tr>
       </tfoot>
     );
