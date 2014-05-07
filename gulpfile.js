@@ -16,7 +16,7 @@ gulp.task('default', function () {
     .pipe(react({
       harmony: true
     }))
-    .pipe(es6ModuleTranspiler({ type: "cjs" }))
+    .pipe(es6ModuleTranspiler({ type: "amd" }))
     .pipe(es6Transpiler({
       disallowUnknownReferences: false,
       environments: ["browser"]

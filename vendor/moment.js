@@ -2373,4 +2373,4 @@ moment.lang('en', {
     Exposing Moment
 ************************************/
 
-export default moment;
+// export default moment;

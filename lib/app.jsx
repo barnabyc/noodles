@@ -47,11 +47,4 @@ let App = React.createClass({
   }
 });
 
-// export default App;
-
-// @todo move this
-
-React.renderComponent(
-  App(),
-  document.getElementById('app')
-);
+export default App;
