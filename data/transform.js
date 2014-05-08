@@ -20,7 +20,7 @@ let computeBalances = (items, keyedAccountBalances) => {
   let sorted = _.sortBy(items, 'incurredDate');
   let runningAccountBalances = _.clone(keyedAccountBalances);
 
-  sorted.map((transaction) => {
+  let computed = sorted.map((transaction) => {
     let {
       account
     } = transaction;

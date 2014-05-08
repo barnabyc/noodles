@@ -9,16 +9,18 @@ import Footer from 'lib/table/footer';
 
 let App = React.createClass({
   propTypes: {
-    items:    React.PropTypes.array.isRequired,
-    accounts: React.PropTypes.array.isRequired
+    items:    React.PropTypes.array,
+    accounts: React.PropTypes.array
   },
 
-  getInitialState: {
-    items:    [],
-    accounts: []
+  getInitialState: function () {
+    return {
+      items:    [],
+      accounts: []
+    }
   },
 
-  render: () => {
+  render: function () {
     let { items, accounts } = this.state;
 
     return (
@@ -34,7 +36,7 @@ let App = React.createClass({
     );
   },
 
-  componentWillMount: () => {
+  componentWillMount: function () {
     let { items, accounts } = this.props;
 
     let transformedAccounts = transformAccounts( accounts );

@@ -12,11 +12,11 @@ let numUniq = (array, property) => {
 
 let Footer = React.createClass({
   propTypes: {
-    items:    React.PropTypes.array.isRequired,
-    accounts: React.PropTypes.array.isRequired
+    items:    React.PropTypes.array,
+    accounts: React.PropTypes.array
   },
 
-  render: () => {
+  render: function () {
     let { items, accounts } = this.props;
 
     return (
@@ -27,7 +27,7 @@ let Footer = React.createClass({
           <th>{total(items, 'debit')}</th>
           <th>{numUniq(items, 'name')}</th>
 
-          {accounts.map((account) => {
+          {accounts && accounts.map((account) => {
             return <th>{total(items,account.accountNumber)}</th>
           })}
 

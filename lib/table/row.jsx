@@ -3,7 +3,7 @@ let Row = React.createClass({
     items: React.PropTypes.array
   },
 
-  render: () => {
+  render: function () {
     let { items } = this.props;
 
     return (
@@ -21,7 +21,7 @@ let Cell = React.createClass({
     item: React.PropTypes.object
   },
 
-  render: () => {
+  render: function () {
     return (
       <td>{item}</td>
     );

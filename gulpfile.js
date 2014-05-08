@@ -4,7 +4,9 @@ var es6ModuleTranspiler = require("gulp-es6-module-transpiler");
 var es6Transpiler       = require('gulp-es6-transpiler');
 
 
-gulp.task('default', function () {
+gulp.task('default', ['libs','vendor']);
+
+gulp.task('libs', function () {
   return gulp.src([
       './**/*.js',
       './**/*.jsx',
@@ -22,4 +24,13 @@ gulp.task('default', function () {
       environments: ["browser"]
     }))
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('vendor', function () {
+  return gulp.src([
+      './vendor/**/*.js',
+      '!./vendor/require.js'
+    ])
+    .pipe(es6ModuleTranspiler({ type: "amd" }))
+    .pipe(gulp.dest('dist/vendor'));
 });

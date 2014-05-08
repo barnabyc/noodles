@@ -1275,4 +1275,4 @@
 
 }).call(window);
 
-// export default window._;
+export default window._;

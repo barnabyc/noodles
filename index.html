@@ -6,11 +6,7 @@
     <script src="vendor/require.js"></script>
     <script>
     require.config({
-      baseUrl: "/dist",
-      paths: {
-        "vendor/underscore": "/vendor/underscore",
-        "vendor/moment":     "/vendor/moment"
-      }
+      baseUrl: "/dist"
     });
     </script>
   </head>
@@ -20,8 +16,10 @@
 
     <script>
     require(['lib/app'], function (App) {
+      var Component = App.default;
+
       React.renderComponent(
-        App(),
+        Component(),
         document.getElementById('app')
       );
     });

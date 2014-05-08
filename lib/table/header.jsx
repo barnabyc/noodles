@@ -1,5 +1,5 @@
 let Header = React.createClass({
-  render: () => {
+  render: function () {
     return (
       <thead>
         <tr>
