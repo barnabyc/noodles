@@ -15,11 +15,20 @@
     <div id="app"></div>
 
     <script>
-    require(['lib/app'], function (App) {
-      var Component = App.default;
+    require([
+      'lib/app',
+      'data/transactions_interface',
+      'data/accounts_interface'
+    ], function (component, trans, accts) {
+      var App          = component.default;
+      var Transactions = trans.default;
+      var Accounts     = accts.default;
 
       React.renderComponent(
-        Component(),
+        App({
+          items:    Transactions.get(),
+          accounts: Accounts.get()
+        }),
         document.getElementById('app')
       );
     });

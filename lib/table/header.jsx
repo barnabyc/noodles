@@ -1,5 +1,12 @@
 let Header = React.createClass({
+  propTypes: {
+    items:    React.PropTypes.array,
+    accounts: React.PropTypes.array
+  },
+
   render: function () {
+    let { items, accounts } = this.props;
+
     return (
       <thead>
         <tr>
@@ -8,10 +15,9 @@ let Header = React.createClass({
           <th>Debit</th>
           <th>Name</th>
 
-          <th>Citizens</th>
-          <th>HIS 1</th>
-          <th>HIS 2</th>
-          <th>Simple</th>
+          {accounts && accounts.map((account) => {
+            return <th>{account.name}</th>
+          })}
 
           <th>Detail</th>
           <th>Notes</th>

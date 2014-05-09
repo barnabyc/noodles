@@ -22,17 +22,17 @@ let Footer = React.createClass({
     return (
       <tfoot>
         <tr>
-          <th></th>
-          <th>{total(items, 'credit')}</th>
-          <th>{total(items, 'debit')}</th>
-          <th>{numUniq(items, 'name')}</th>
+          <td></td>
+          <td>{total(items, 'credit')}</td>
+          <td>{total(items, 'debit')}</td>
+          <td>{numUniq(items, 'name')}</td>
 
           {accounts && accounts.map((account) => {
-            return <th>{total(items,account.accountNumber)}</th>
+            return <td>{total(items,account.accountNumber)}</td>
           })}
 
-          <th>{numUniq(items, 'detail')}</th>
-          <th>{numUniq(items, 'notes')}</th>
+          <td>{numUniq(items, 'detail')}</td>
+          <td>{numUniq(items, 'notes')}</td>
         </tr>
       </tfoot>
     );

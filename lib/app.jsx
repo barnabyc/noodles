@@ -25,13 +25,13 @@ let App = React.createClass({
 
     return (
       <div>
-        <Header />
+        <Header items={items} accounts={accounts} />
 
         {items.map((item) => {
           return Row({ item: item });
         })}
 
-        <Footer />
+        <Footer items={items} accounts={accounts} />
       </div>
     );
   },
