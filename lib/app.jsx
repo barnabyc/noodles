@@ -15,16 +15,16 @@ let App = React.createClass({
 
   getInitialState: function () {
     return {
-      items:    [],
-      accounts: []
+      items: []
     }
   },
 
   render: function () {
-    let { items, accounts } = this.state;
+    let { items } = this.state;
+    let { accounts } = this.props;
 
     return (
-      <div>
+      <table>
         <Header items={items} accounts={accounts} />
 
         {items.map((item) => {
@@ -32,19 +32,18 @@ let App = React.createClass({
         })}
 
         <Footer items={items} accounts={accounts} />
-      </div>
+      </table>
     );
   },
 
   componentWillMount: function () {
     let { items, accounts } = this.props;
 
-    let transformedAccounts = transformAccounts( accounts );
-    let transformedItems    = transformTransactions( items, transformedAccounts );
+    let keyedAccountBalances = transformAccounts( accounts );
+    let transformedItems     = transformTransactions( items, keyedAccountBalances );
 
     this.setState({
-      items:    transformedItems,
-      accounts: transformedAccounts
+      items: transformedItems
     });
   }
 });

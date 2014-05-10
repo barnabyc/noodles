@@ -1,7 +1,7 @@
 let Header = React.createClass({
   propTypes: {
     items:    React.PropTypes.array,
-    accounts: React.PropTypes.array
+    accounts: React.PropTypes.object
   },
 
   render: function () {

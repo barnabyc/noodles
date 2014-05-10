@@ -5,8 +5,8 @@ let transformAccounts = (accounts) => {
 };
 
 let keyAccountBalances = (accounts) => {
-  return _.reduce(accounts, (account, acc) => {
-    acc[ account.accountNumber ] = account.initialBalances;
+  return _.reduce(accounts, (acc, account) => {
+    acc[ account.accountNumber ] = account.initialBalance;
 
     return acc;
   }, {});

@@ -1,15 +1,17 @@
+import _ from 'vendor/underscore';
+
 let Row = React.createClass({
   propTypes: {
     items: React.PropTypes.array
   },
 
   render: function () {
-    let { items } = this.props;
+    let { item } = this.props;
 
     return (
       <tr>
-        {items.map((item) => {
-          return <Cell item={item} />
+        {_.keys(item).map((key) => {
+          return <Cell item={item[key]} />
         })}
       </tr>
     );
@@ -22,6 +24,8 @@ let Cell = React.createClass({
   },
 
   render: function () {
+    let { item } = this.props;
+
     return (
       <td>{item}</td>
     );
