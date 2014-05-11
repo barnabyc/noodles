@@ -8,26 +8,31 @@ let Row = React.createClass({
   render: function () {
     let { item } = this.props;
 
+    let credit;
+    let debit;
+    if (item.amount > 0) credit = item.amount;
+    else if (item.amount <= 0) debit = Math.abs(item.amount);
+
+    let detail;
+    if (item.detail) {
+      detail = _.values(item.detail).join(', ');
+    }
+
     return (
       <tr>
-        {_.keys(item).map((key) => {
-          return <Cell item={item[key]} />
-        })}
+        <td>{item.incurredDate.format('M/D')}</td>
+        <td>{credit}</td>
+        <td>{debit}</td>
+        <td>{item.name}</td>
+
+        <td>{item.balance}</td>
+        <td>acct2</td>
+        <td>acct3</td>
+        <td>acct4</td>
+
+        <td>{detail}</td>
+        <td>{item.notes}</td>
       </tr>
-    );
-  }
-});
-
-let Cell = React.createClass({
-  propTypes: {
-    item: React.PropTypes.object
-  },
-
-  render: function () {
-    let { item } = this.props;
-
-    return (
-      <td>{item}</td>
     );
   }
 });

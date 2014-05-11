@@ -33,7 +33,7 @@ let TransactionsInterface = {
     return [
       {
         incurredDate: moment('2014-04-20'),
-        amount:       100.11,
+        amount:       "-100.11",
         name:         "Dunkies",
         account:      "CDEF",
         approximate:  false,
@@ -43,7 +43,7 @@ let TransactionsInterface = {
       },
       {
         incurredDate: moment('2014-04-21'),
-        amount:       200.22,
+        amount:       "-200.22",
         name:         "Panera",
         account:      "CDEF",
         approximate:  false,
