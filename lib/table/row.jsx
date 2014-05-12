@@ -6,7 +6,7 @@ let Row = React.createClass({
   },
 
   render: function () {
-    let { item } = this.props;
+    let { item, accounts } = this.props;
 
     let credit;
     let debit;
@@ -25,10 +25,15 @@ let Row = React.createClass({
         <td>{debit}</td>
         <td>{item.name}</td>
 
-        <td>{item.balance}</td>
-        <td>acct2</td>
-        <td>acct3</td>
-        <td>acct4</td>
+        {accounts && accounts.map((account) => {
+          let val;
+
+          if (account.accountNumber == item.account) {
+           val = item.balance;
+          }
+
+          return <td>{val}</td>
+        })}
 
         <td>{detail}</td>
         <td>{item.notes}</td>

@@ -17,22 +17,22 @@ let AccountsInterface = {
       {
         "name": "Citizens",
         "accountNumber": "1234",
-        "initialBalance": "100.22"
+        "initialBalance": 100.22
       },
       {
         "name": "HIS 1",
         "accountNumber": "5678",
-        "initialBalance": "40.12"
+        "initialBalance": 40.12
       },
       {
         "name": "HIS 2",
         "accountNumber": "90AB",
-        "initialBalance": "7.75"
+        "initialBalance": 7.75
       },
       {
         "name": "Simple",
         "accountNumber": "CDEF",
-        "initialBalance": "0.39"
+        "initialBalance": 0.39
       }
     ];
   }

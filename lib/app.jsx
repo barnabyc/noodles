@@ -28,7 +28,7 @@ let App = React.createClass({
         <Header items={items} accounts={accounts} />
 
         {items.map((item) => {
-          return Row({ item: item });
+          return <Row item={item} accounts={accounts} />
         })}
 
         <Footer items={items} accounts={accounts} />
