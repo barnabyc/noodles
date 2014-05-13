@@ -23,12 +23,20 @@ let Footer = React.createClass({
       <tfoot>
         <tr>
           <td></td>
-          <td>{total(items, 'credit')}</td>
-          <td>{total(items, 'debit')}</td>
+          <td>{total(items, 'amount')}</td>
+          <td>{total(items, 'amount')}</td>
           <td>{numUniq(items, 'name')}</td>
 
           {accounts && accounts.map((account) => {
-            return <td>{total(items,account.accountNumber)}</td>
+            return <td>{_.reduce(items,(memo, item) => {
+              let val = 0;
+
+              if (account.accountNumber === item.account) {
+                val = item.amount;
+              }
+
+              return memo + val;
+            },0)}</td>
           })}
 
           <td>{numUniq(items, 'detail')}</td>
