@@ -50,6 +50,16 @@ let TransactionsInterface = {
         pending:      false,
         cleared:      true,
         clearedDate:  moment('2014-04-21')
+      },
+      {
+        incurredDate: moment('2014-04-21'),
+        amount:       -700.07,
+        name:         "Williams",
+        account:      "1234",
+        approximate:  false,
+        pending:      false,
+        cleared:      true,
+        clearedDate:  moment('2014-04-24')
       }
     ];
   }

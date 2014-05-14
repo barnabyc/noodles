@@ -1,11 +1,5 @@
 import _ from 'vendor/underscore';
 
-let total = (array, property) => {
-  return _.reduce(array, (datum, acc) => {
-    return acc + datum[ property ];
-  }, 0);
-};
-
 let numUniq = (array, property) => {
   return _.uniq(_.pluck(array, property)).length;
 };
@@ -23,12 +17,24 @@ let Footer = React.createClass({
       <tfoot>
         <tr>
           <td></td>
-          <td>{total(items, 'amount')}</td>
-          <td>{total(items, 'amount')}</td>
+          <td>{_.reduce(items, (memo, item) => {
+            let val = 0;
+
+            if (item.amount > 0) val = item.amount;
+
+            return memo + val;
+          },0)}</td>
+          <td>{_.reduce(items, (memo, item) => {
+            let val = 0;
+
+            if (item.amount < 0) val = item.amount;
+
+            return memo + val;
+          },0)}</td>
           <td>{numUniq(items, 'name')}</td>
 
           {accounts && accounts.map((account) => {
-            return <td>{_.reduce(items,(memo, item) => {
+            return <td>{_.reduce(items, (memo, item) => {
               let val = 0;
 
               if (account.accountNumber === item.account) {
