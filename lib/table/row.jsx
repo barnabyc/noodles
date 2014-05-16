@@ -2,11 +2,17 @@ import _ from 'vendor/underscore';
 
 let Row = React.createClass({
   propTypes: {
-    items: React.PropTypes.array
+    items: React.PropTypes.array.isRequired,
+    accounts: React.PropTypes.array.isRequired,
+    onMouseEnter: React.PropTypes.func.isRequired
   },
 
   render: function () {
-    let { item, accounts } = this.props;
+    let {
+      item,
+      accounts,
+      onMouseEnter
+    } = this.props;
 
     let credit;
     let debit;
@@ -19,7 +25,7 @@ let Row = React.createClass({
     }
 
     return (
-      <tr>
+      <tr onMouseEnter={this.props.onMouseEnter}>
         <td>{item.incurredDate.format('M/D')}</td>
         <td>{credit}</td>
         <td>{debit}</td>

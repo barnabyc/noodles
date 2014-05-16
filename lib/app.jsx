@@ -1,3 +1,5 @@
+import _ from 'vendor/underscore';
+
 import {
   transformAccounts,
   transformTransactions
@@ -27,8 +29,8 @@ let App = React.createClass({
       <table>
         <Header items={items} accounts={accounts} />
 
-        {items.map((item) => {
-          return <Row item={item} accounts={accounts} />
+        {items.map((item, idx) => {
+          return <Row item={item} accounts={accounts} onMouseEnter={_.partial(this.handleMouseEnter, idx)} />
         })}
 
         <Footer items={items} accounts={accounts} />
@@ -45,6 +47,11 @@ let App = React.createClass({
     this.setState({
       items: transformedItems
     });
+  },
+
+  handleMouseEnter: function (idx) {
+    console.log('~~~ handleMouseEnter, row: ', idx);
+    // @todo show controls
   }
 });
 
