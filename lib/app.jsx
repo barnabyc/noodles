@@ -9,7 +9,7 @@ import Header from 'lib/table/header';
 import Row    from 'lib/table/row';
 import Footer from 'lib/table/footer';
 
-let App = React.createClass({
+const App = React.createClass({
   propTypes: {
     items:    React.PropTypes.array,
     accounts: React.PropTypes.array
@@ -17,21 +17,37 @@ let App = React.createClass({
 
   getInitialState: function () {
     return {
-      items: []
+      items: [],
+      controlItemIdx: null
     }
   },
 
   render: function () {
-    let { items } = this.state;
-    let { accounts } = this.props;
+    const { accounts } = this.props;
+    const {
+      items,
+      controlItemIdx
+    } = this.state;
+
+    let rows = items.map((item, idx) => {
+      return (
+        <Row key={idx}
+          item={item}
+          accounts={accounts}
+          onMouseEnter={_.partial(this.handleMouseEnter, idx)}
+          onMouseLeave={this.handleMouseLeave} />
+      );
+    });
+
+    if (controlItemIdx) {
+      rows.splice(controlItemIdx+1, 0, <tr className="control-row"><td colSpan="11">kittens</td></tr>);
+    }
 
     return (
       <table>
         <Header items={items} accounts={accounts} />
 
-        {items.map((item, idx) => {
-          return <Row item={item} accounts={accounts} onMouseEnter={_.partial(this.handleMouseEnter, idx)} />
-        })}
+        <tbody>{rows}</tbody>
 
         <Footer items={items} accounts={accounts} />
       </table>
@@ -50,8 +66,17 @@ let App = React.createClass({
   },
 
   handleMouseEnter: function (idx) {
-    console.log('~~~ handleMouseEnter, row: ', idx);
-    // @todo show controls
+    console.log('~~~ handleMouseEnter',idx);
+    this.setState({
+      controlItemIdx: idx
+    });
+  },
+
+  handleMouseLeave: function () {
+    console.log('~~~ handleMouseLeave');
+    this.setState({
+      controlItemIdx: null
+    });
   }
 });
 

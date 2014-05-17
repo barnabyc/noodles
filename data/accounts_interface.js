@@ -33,6 +33,11 @@ let AccountsInterface = {
         "name": "Simple",
         "accountNumber": "CDEF",
         "initialBalance": 0.39
+      },
+      {
+        "name": "Citi",
+        "accountNumber": "QQQQ",
+        "initialBalance": -500
       }
     ];
   }
