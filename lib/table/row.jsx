@@ -1,6 +1,6 @@
 import _ from 'vendor/underscore';
 
-let Row = React.createClass({
+const Row = React.createClass({
   propTypes: {
     item: React.PropTypes.object.isRequired,
     accounts: React.PropTypes.array.isRequired,
@@ -9,7 +9,7 @@ let Row = React.createClass({
   },
 
   render: function () {
-    let {
+    const {
       item,
       accounts,
       onMouseEnter
@@ -43,7 +43,10 @@ let Row = React.createClass({
         })}
 
         <td>{detail}</td>
-        <td>{item.notes}</td>
+        <td className="notes control-container">
+          {item.notes}
+          {this.props.children}
+        </td>
       </tr>
     );
   }

@@ -13,11 +13,14 @@
     th { text-align: left; }
     td { border: 1px solid #444; }
     tfoot td { background: #eee; }
-    tr.control-row {
+    .control-container { position: relative; }
+    .control {
       position: absolute;
-      left: 100px;
-      width: 400px;
+      right: 20px;
       background: tomato;
+      width: 200px;
+      background: rgba(255, 99, 71, 0.9);
+      z-index: 1;
     }
     </style>
   </head>

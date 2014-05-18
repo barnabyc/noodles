@@ -29,19 +29,27 @@ const App = React.createClass({
       controlItemIdx
     } = this.state;
 
-    let rows = items.map((item, idx) => {
+
+
+    const rows = items.map((item, idx) => {
+      let control;
+
+      if (this.state.controlItemIdx === idx) {
+        control = <span className="control">kittens</span>
+      }
+
       return (
         <Row key={idx}
           item={item}
           accounts={accounts}
           onMouseEnter={_.partial(this.handleMouseEnter, idx)}
-          onMouseLeave={this.handleMouseLeave} />
+          onMouseLeave={this.handleMouseLeave}>
+
+          {control}
+
+        </Row>
       );
     });
-
-    if (controlItemIdx) {
-      rows.splice(controlItemIdx+1, 0, <tr className="control-row"><td colSpan="11">kittens</td></tr>);
-    }
 
     return (
       <table>
@@ -55,10 +63,10 @@ const App = React.createClass({
   },
 
   componentWillMount: function () {
-    let { items, accounts } = this.props;
+    const { items, accounts } = this.props;
 
-    let keyedAccountBalances = transformAccounts( accounts );
-    let transformedItems     = transformTransactions( items, keyedAccountBalances );
+    const keyedAccountBalances = transformAccounts( accounts );
+    const transformedItems     = transformTransactions( items, keyedAccountBalances );
 
     this.setState({
       items: transformedItems
