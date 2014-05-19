@@ -35,7 +35,12 @@ const App = React.createClass({
       let control;
 
       if (this.state.controlItemIdx === idx) {
-        control = <span className="control">kittens</span>
+        control = (
+          <span className="control">
+            <a onClick={_.partial(this.handleClickInsertAbove, idx)}>Up</a>
+            <a onClick={_.partial(this.handleClickInsertBelow, idx)}>Dn</a>
+          </span>
+        );
       }
 
       return (
@@ -85,7 +90,15 @@ const App = React.createClass({
     this.setState({
       controlItemIdx: null
     });
-  }
+  },
+
+  handleClickInsertAbove: function (idx) {
+    console.log('~~~ handleClickInsertAbove ',idx);
+  },
+
+  handleClickInsertBelow: function (idx) {
+    console.log('~~~ handleClickInsertBelow',idx);
+  },
 });
 
 export default App;
