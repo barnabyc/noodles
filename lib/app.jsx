@@ -8,6 +8,7 @@ import {
 import Header from 'lib/table/header';
 import Row    from 'lib/table/row';
 import Footer from 'lib/table/footer';
+import NewTransaction from 'lib/new_transaction';
 
 const App = React.createClass({
   propTypes: {
