@@ -5,9 +5,9 @@ import {
   transformTransactions
 } from 'data/transform';
 
-import Header from 'lib/table/header';
-import Row    from 'lib/table/row';
-import Footer from 'lib/table/footer';
+import Header         from 'lib/table/header';
+import Row            from 'lib/table/row';
+import Footer         from 'lib/table/footer';
 import NewTransaction from 'lib/new_transaction';
 
 const App = React.createClass({
@@ -27,10 +27,9 @@ const App = React.createClass({
     const { accounts } = this.props;
     const {
       items,
-      controlItemIdx
+      controlItemIdx,
+      showNewTransaction
     } = this.state;
-
-
 
     const rows = items.map((item, idx) => {
       let control;
@@ -57,11 +56,17 @@ const App = React.createClass({
       );
     });
 
+    if (showNewTransaction) {
+      rows.splice(showNewTransaction,0,<NewTransaction accounts={accounts} />)
+    }
+
     return (
       <table>
         <Header items={items} accounts={accounts} />
 
-        <tbody>{rows}</tbody>
+        <tbody>
+          {rows}
+        </tbody>
 
         <Footer items={items} accounts={accounts} />
       </table>
@@ -95,10 +100,16 @@ const App = React.createClass({
 
   handleClickInsertAbove: function (idx) {
     console.log('~~~ handleClickInsertAbove ',idx);
+    this.setState({
+      showNewTransaction: idx-1
+    });
   },
 
   handleClickInsertBelow: function (idx) {
     console.log('~~~ handleClickInsertBelow',idx);
+    this.setState({
+      showNewTransaction: idx+1
+    });
   },
 });
 
