@@ -57,7 +57,7 @@ const App = React.createClass({
     });
 
     if (showNewTransaction) {
-      rows.splice(showNewTransaction,0,<NewTransaction accounts={accounts} />)
+      rows.splice(showNewTransaction,0,<NewTransaction accounts={accounts} onSave={this.handleSaveTransaction} />)
     }
 
     return (
@@ -111,6 +111,16 @@ const App = React.createClass({
       showNewTransaction: idx+1
     });
   },
+
+  handleSaveTransaction: function (transaction) {
+    let updatedItems = this.props.items.concat();
+    const insertIndex = this.state.showNewTransaction;
+
+    updatedItems.splice(insertIndex, 0, transaction);
+    this.setProps({
+      items: updatedItems
+    });
+  }
 });
 
 export default App;

@@ -1,6 +1,7 @@
 const NewTransaction = React.createClass({
   propTypes: {
-    accounts: React.PropTypes.array
+    accounts: React.PropTypes.array,
+    onSave:   React.PropTypes.func
   },
 
   getInitialState: function () {
@@ -32,7 +33,12 @@ const NewTransaction = React.createClass({
         })}
 
         <td>-</td>
-        <td><input value={notes} onChange={_.partial(this.handleChange,'notes')} type="text" placeholder="notes" /></td>
+        <td>
+          <input value={notes} onChange={_.partial(this.handleChange,'notes')} type="text" placeholder="notes" />
+          <span className="control">
+            <a onClick={this.handleClickSave}>Save</a>
+          </span>
+        </td>
       </tr>
     );
   },
@@ -43,6 +49,10 @@ const NewTransaction = React.createClass({
     state[ fieldName ] = ev.target.value;
 
     this.setState( state );
+  },
+
+  handleClickSave: function () {
+    this.props.onSave( this.state );
   }
 });
 
