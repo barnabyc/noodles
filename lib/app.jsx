@@ -30,7 +30,7 @@ const App = React.createClass({
       controlItemIdx,
       showNewTransaction
     } = this.state;
-
+console.log('~~~ render, items.length:', items.length);
     const rows = items.map((item, idx) => {
       let control;
 
@@ -73,7 +73,16 @@ const App = React.createClass({
     );
   },
 
+
+  componentWillReceiveProps: function (nextProps) {
+    this.transformItems();
+  },
+
   componentWillMount: function () {
+    this.transformItems();
+  },
+
+  transformItems: function () {
     const { items, accounts } = this.props;
 
     const keyedAccountBalances = transformAccounts( accounts );
@@ -82,6 +91,7 @@ const App = React.createClass({
     this.setState({
       items: transformedItems
     });
+
   },
 
   handleMouseEnter: function (idx) {
@@ -113,6 +123,12 @@ const App = React.createClass({
   },
 
   handleSaveTransaction: function (transaction) {
+    console.log('~~~ handleSaveTransaction');
+
+    // this.setState({
+    //   showNewTransaction: null
+    // });
+
     let updatedItems = this.props.items.concat();
     const insertIndex = this.state.showNewTransaction;
 
