@@ -14,18 +14,20 @@ const NewTransaction = React.createClass({
     const { accounts } = this.props;
     const {
       incurredDate,
-      credit,
-      debit,
+      amount,
       name,
       acct,
       notes
     } = this.state;
 
+    let credit = amount > 0 ? amount : null;
+    let debit  = amount < 0 ? amount : null;
+
     return (
       <tr>
         <td><input value={incurredDate} onChange={_.partial(this.handleChange,'incurredDate')} type="text" placeholder="incurredDate" /></td>
-        <td><input value={amount} onChange={_.partial(this.handleChange,'amount')} type="text" placeholder="amount" /></td>
-        <td><input value={amount} onChange={_.partial(this.handleChange,'amount')} type="text" placeholder="amount" /></td>
+        <td><input value={credit} onChange={_.partial(this.handleChange,'amount')} type="text" placeholder="credit" /></td>
+        <td><input value={debit} onChange={_.partial(this.handleChange,'amount')} type="text" placeholder="debit" /></td>
         <td><input value={name} onChange={_.partial(this.handleChange,'name')} type="text" placeholder="name" /></td>
 
         {accounts && accounts.map((account) => {
