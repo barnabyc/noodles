@@ -73,17 +73,16 @@ console.log('~~~ render, items.length:', items.length);
     );
   },
 
-
   componentWillReceiveProps: function (nextProps) {
-    this.transformItems();
+    this.transformItems(nextProps.items);
   },
 
   componentWillMount: function () {
-    this.transformItems();
+    this.transformItems(this.props.items);
   },
 
-  transformItems: function () {
-    const { items, accounts } = this.props;
+  transformItems: function (items) {
+    const { accounts } = this.props;
 
     const keyedAccountBalances = transformAccounts( accounts );
     const transformedItems     = transformTransactions( items, keyedAccountBalances );
@@ -95,39 +94,39 @@ console.log('~~~ render, items.length:', items.length);
   },
 
   handleMouseEnter: function (idx) {
-    console.log('~~~ handleMouseEnter',idx);
+    // console.log('~~~ handleMouseEnter',idx);
     this.setState({
       controlItemIdx: idx
     });
   },
 
   handleMouseLeave: function () {
-    console.log('~~~ handleMouseLeave');
+    // console.log('~~~ handleMouseLeave');
     this.setState({
       controlItemIdx: null
     });
   },
 
   handleClickInsertAbove: function (idx) {
-    console.log('~~~ handleClickInsertAbove ',idx);
+    // console.log('~~~ handleClickInsertAbove ',idx);
     this.setState({
       showNewTransaction: idx-1
     });
   },
 
   handleClickInsertBelow: function (idx) {
-    console.log('~~~ handleClickInsertBelow',idx);
+    // console.log('~~~ handleClickInsertBelow',idx);
     this.setState({
       showNewTransaction: idx+1
     });
   },
 
   handleSaveTransaction: function (transaction) {
-    console.log('~~~ handleSaveTransaction');
+    console.log('~~~ handleSaveTransaction', transaction);
 
-    // this.setState({
-    //   showNewTransaction: null
-    // });
+    this.setState({
+      showNewTransaction: null
+    });
 
     let updatedItems = this.props.items.concat();
     const insertIndex = this.state.showNewTransaction;

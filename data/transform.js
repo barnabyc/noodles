@@ -25,7 +25,7 @@ let computeBalances = (items, keyedAccountBalances) => {
       account
     } = transaction;
 
-    if (!_.isNumber(transaction.amount)) transaction.amount = 0;
+    transaction.amount = parseFloat(transaction.amount);
 
     runningAccountBalances[ account ] += transaction.amount;
     transaction.balance = runningAccountBalances[ account ];
