@@ -39,7 +39,7 @@ console.log('~~~ state',this.state);
         })}
 
         <td>-</td>
-        <td>
+        <td className="control-container">
           <input value={notes} onChange={_.partial(this.handleChange,'notes')} type="text" placeholder="notes" />
           <span className="control">
             <a onClick={this.handleClickSave}>Save</a>
