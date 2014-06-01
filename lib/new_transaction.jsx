@@ -43,6 +43,7 @@ console.log('~~~ state',this.state);
           <input value={notes} onChange={_.partial(this.handleChange,'notes')} type="text" placeholder="notes" />
           <span className="control">
             <a onClick={this.handleClickSave}>Save</a>
+            <a onClick={this.handleClickCancel}>Cancel</a>
           </span>
         </td>
       </tr>
@@ -63,6 +64,10 @@ console.log('~~~ state',this.state);
 
   handleClickSave: function () {
     this.props.onSave( this.state );
+  },
+
+  handleClickCancel: function () {
+    this.props.onCancel();
   }
 });
 

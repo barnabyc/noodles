@@ -30,7 +30,7 @@ const App = React.createClass({
       controlItemIdx,
       showNewTransaction
     } = this.state;
-console.log('~~~ render, items.length:', items.length);
+
     const rows = items.map((item, idx) => {
       let control;
 
@@ -61,7 +61,7 @@ console.log('~~~ render, items.length:', items.length);
     }
 
     return (
-      <table>
+      <table className="transactions">
         <Header items={items} accounts={accounts} />
 
         <tbody>
