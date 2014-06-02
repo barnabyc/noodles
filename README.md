@@ -1,5 +1,7 @@
 # Noodles, oodles of them
 
+## A React example application.
+
 Helps automate finances across accounts.
 
 Track multiple accounts in a single user-interface.
