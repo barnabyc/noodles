@@ -94,36 +94,30 @@ const App = React.createClass({
   },
 
   handleMouseEnter: function (idx) {
-    // console.log('~~~ handleMouseEnter',idx);
     this.setState({
       controlItemIdx: idx
     });
   },
 
   handleMouseLeave: function () {
-    // console.log('~~~ handleMouseLeave');
     this.setState({
       controlItemIdx: null
     });
   },
 
   handleClickInsertAbove: function (idx) {
-    // console.log('~~~ handleClickInsertAbove ',idx);
     this.setState({
       showNewTransaction: idx-1
     });
   },
 
   handleClickInsertBelow: function (idx) {
-    // console.log('~~~ handleClickInsertBelow',idx);
     this.setState({
       showNewTransaction: idx+1
     });
   },
 
   handleSaveTransaction: function (transaction) {
-    console.log('~~~ handleSaveTransaction', transaction);
-
     this.setState({
       showNewTransaction: null
     });

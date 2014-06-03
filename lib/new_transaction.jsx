@@ -12,7 +12,6 @@ const NewTransaction = React.createClass({
   },
 
   render: function () {
-console.log('~~~ state',this.state);
     const { accounts } = this.props;
     const {
       incurredDate,
