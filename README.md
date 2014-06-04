@@ -1,13 +1,12 @@
-# Noodles, oodles of them
+# React example application.
 
-## A React example application.
+## Noodles, oodles of them
 
-Helps automate finances across accounts.
+Helps track finances across accounts.
 
-Track multiple accounts in a single user-interface.
+Track any number of accounts in a single place.
 
 1. Create pending transactions
 2. Indicate cleared dates
 3. Automatically track recurring payments
 
-All from any number of accounts!
