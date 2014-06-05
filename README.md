@@ -1,5 +1,14 @@
 # React example application.
 
+To try:
+`npm install`
+`gulp`
+
+Run any web server, such as:
+`python -m SimpleHTTPServer`
+
+Then open `http://localhost:8000/index.html`
+
 ## Noodles, oodles of them
 
 Helps track finances across accounts.
