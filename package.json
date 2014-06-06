@@ -1,5 +1,5 @@
 {
-  "name": "noodles",
+  "name": "noodles react example app",
   "author": "Barnaby Claydon",
   "devDependencies": {
     "gulp": "^3.6.2",
