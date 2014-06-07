@@ -29,8 +29,12 @@ const COMPUTED = {
 
 let TransactionsInterface = {
   get: function () {
-    // @todo localStorage
-    return [
+    return localStorage.getItem('transactions');
+  },
+  set: function (data) {
+    // @todo finish
+    // localStorage.setItem('transactions', data);
+    localStorage.setItem('transactions', [
       {
         incurredDate: moment('2014-04-20'),
         amount:       -100.11,
@@ -81,7 +85,7 @@ let TransactionsInterface = {
         cleared:      true,
         clearedDate:  moment('2014-04-28')
       }
-    ];
+    ])
   }
 };
 
